@@ -1,25 +1,21 @@
 "use client"
 
-import { CustomButton } from "@/components/CustomButton";
-import { FormEvent } from "react";
+import { useState } from "react";
 
 const Page = () => {
+  const [count, setCount] = useState<number>(0);
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    alert('Formulário enviado!');
-  }
+  const handleClickButton = () => {
+    setCount(count + 1);
+  };
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center">
-      <h1 className="text-5xl mb-3">Form de login</h1>
-      <form onSubmit={handleFormSubmit}>
-        <input type="text" />
-        <input type="submit" />
-      </form>
+      <p>{count}</p>
+      <button onClick={handleClickButton} className="bg-red-500">+1</button>
 
     </div>
   );
 }
 
-export default Page;    
+export default Page;      
